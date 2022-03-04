@@ -1,0 +1,232 @@
+{
+	"info": {
+		"_postman_id": "fda7b9ac-7d7a-42b7-bc08-5c7a889ba248",
+		"name": "TreasuryCollection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create User",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n   \"userName\": \"notbatman\",\n   \"firstName\": \"Bruce\",\n   \"lastName\": \"Wayne\",\n   \"email\": \"bat@man.com\",\n   \"password\": \"ironmansux\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3001/user/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"user",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Account",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "userId",
+						"value": "1",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"accountName\": \"Account Dracula\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3001/account",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"account"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Account Details",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "userid",
+						"value": "1",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3001/account/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"account",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Lock Account",
+			"request": {
+				"method": "LOCK",
+				"header": [
+					{
+						"key": "userid",
+						"value": "1",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3001/account/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"account",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Close Account",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "userid",
+						"value": "1",
+						"type": "text"
+					},
+					{
+						"key": "locktoken",
+						"value": "f7f592ec-33cd-4d4a-bffc-af985d9b87f7",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3001/account/1/close",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"account",
+						"1",
+						"close"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Debit",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "userid",
+						"value": "1",
+						"type": "text"
+					},
+					{
+						"key": "idempotencykey",
+						"value": "",
+						"type": "text"
+					},
+					{
+						"key": "locktoken",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"amount\": 100,\n    \"transactionType\": \"credit\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3001/account/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"account",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Unlock Account",
+			"request": {
+				"method": "UNLOCK",
+				"header": [
+					{
+						"key": "userid",
+						"value": "1",
+						"type": "text"
+					},
+					{
+						"key": "locktoken",
+						"value": "f7f592ec-33cd-4d4a-bffc-af985d9b87f7",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3001/account/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"account",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
